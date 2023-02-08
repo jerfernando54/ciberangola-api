@@ -8,11 +8,12 @@ var app = require('../app');
 var debug = require('debug')('backendcyberangola:server');
 var http = require('http');
 const db = require('./../services/mongodb/db')
+require('dotenv').config();
 
 /**
  * Get port from environment and store in Express.
  */
-const { appConfig, dbConfig } = require('./../config/config')
+const { appConfig } = require('./../config/config')
 
 var port = normalizePort(process.env.PORT || appConfig.port);
 app.set('port', port);
@@ -20,7 +21,7 @@ app.set('port', port);
 /**
  * DB Connection 
  */
-db(dbConfig.dbUrl)
+db()
 
 /**
  * Create HTTP server.
