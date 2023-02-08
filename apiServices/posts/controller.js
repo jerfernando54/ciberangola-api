@@ -10,7 +10,8 @@ module.exports = {
         const posts = await dao.getPosts();
         const postsDto = dto.multiple(posts);
 
-        return response.success(req, res, postsDto, 200);
+        // return response.success(req, res, postsDto, 200);
+        return res.json(postsDto);
     },
 
     async postPost(body) {
