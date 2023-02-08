@@ -12,7 +12,7 @@ module.exports = {
 
     async getPosts() {
        return new Promise((resolve, reject) => {
-            Model.find()
+            Model.find({}).sort({date: -1})
                 .populate('author')
                 .exec((error, posts) => {
                     if(error) {
