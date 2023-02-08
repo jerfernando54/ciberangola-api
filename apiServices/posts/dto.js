@@ -4,7 +4,7 @@ const single = (resource) => ({
     date: resource.date,
     title: resource.title,
     content: resource.content,
-    Author: resource.author
+    Author: resource.author.name
 
     
 });
