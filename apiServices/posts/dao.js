@@ -9,6 +9,7 @@ module.exports = {
         const post = new Model(postDao);
         post.save();
     },
+    
 
     async getPosts() {
        return new Promise((resolve, reject) => {
@@ -20,7 +21,21 @@ module.exports = {
                         return false;
                     }
                     resolve(posts);
-                })
-       })
+                });
+       });
+    },
+
+    async getPostById(postId) {
+        return new Promise((resolve, reject) => {
+            Model.find({_id: postId})
+                .populate('author')
+                .exec((error, post) => {
+                    if(error) {
+                        reject(error);
+                        return false;
+                    }
+                    resolve(post);
+                });
+       });
     }
 }

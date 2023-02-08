@@ -14,6 +14,14 @@ module.exports = {
         return res.json(postsDto);
     },
 
+    async getPostById(postId) {
+        const postDao = await dao.getPostById(postId);
+        const postDto = dto.multiple(postDao);
+
+        return postDto;
+
+    },
+
     async postPost(body) {
         return new Promise((resolve, reject) => {
             const post = {
